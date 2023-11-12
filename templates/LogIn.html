@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>LogIn</title>
+        <link rel="stylesheet" href="static/LogIn.css">
+    </head>
+    <body>
+        <a href="/" class="back"><img src="../static/return.png"></a>
+        <div class="container">
+        <h1>LogIn</h1>
+        <form action="/LogIn.html" method="post">
+            <br>
+
+            {% if error %}
+            <div id="messageBox">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %} <br>
+            <div class="box">
+            <label>Name:</label><br>
+            <input type="text" name="username" required><br>
+            </div>
+            <div class="box">
+            <label>Password:</label><br>
+            <input type="password" name="password" required><br>
+            </div>
+            <button type="submit" name ="action" value = "add" class="login-button">LogIn</button> <!-- Use a submit button instead of an anchor -->
+        </form>
+        </div>
+    </body>
+</html>

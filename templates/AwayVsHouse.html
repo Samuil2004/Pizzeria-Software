@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>TakeAwayOrInHouse</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='AwayVsHouse.css') }}">
+    </head>
+    <body>
+      <a href="TakeAway.html" class="back"><img src="../static/return.png"></a>
+      <div class="container">
+              <h1>Your Order:</h1>
+ 
+                <ul>
+                    {% for pizza in basket %}
+                    <li>{{ pizza['Amount'] }}x {{ pizza['Size'] }} {{ pizza['Pizza'] }} ${{ pizza['Price'] }}</li>
+                        {% if 'Comments' in pizza %}
+                        <h4>*Comments: {{ pizza['Comments'] }}</h4>
+                        {% endif %}
+                        <form action="/remove_from_basket2/{{ loop.index0 }}" method="post">
+                            <button type="submit" name = "action"  value = "remove" class="btn btn-success">Remove from basket</button>
+                        </form>
+                    {% endfor %}
+                </ul>
+ 
+                <h3>Total: ${{ Total }}</h3>
+ 
+                <form action="/AwayVsHouse.html" method="post">
+ 
+ 
+                <h4>Where would you like to eat:</h4>
+                <div class="options">
+                  <div class="out">
+                    <a href="OrderWaitRoom.html">
+                        <button class="take" name = "away" value="TakeAway">Take Away</button>
+                    </a>
+                  </div>
+                  <div class="or">or</div>
+                  <div class="in">
+                    <input type="checkbox" id="textCheckbox" />
+                    <label for="textCheckbox" name="action" value="rrestaurant" class="restaurant">RESTAURANT</label>
+                    <input type="number" name="TableNumber" id="textField" placeholder="Enter text" />
+                    <button id="hiddenButton" name="action" value="Confirm">Confirm order</button>
+                  </div>
+                  </div>
+                {% if error %}
+                <div id="messageBox">
+                    <p>{{ error }}</p>
+                </div>
+                {% endif %}
+                </div>
+    </body>
+</html>

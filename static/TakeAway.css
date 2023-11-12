@@ -1,0 +1,142 @@
+*{
+    font-family: myFont;
+    color: white;
+    list-style: none ;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(Italiana-Regular.ttf);
+}
+
+@font-face {
+    font-family: title;
+    src: url(EUR42.otf);
+}
+
+
+
+.btn {
+    margin:10px;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    font-size: xx-small;
+    border-radius: 0;
+}
+
+button {
+    background-color: green;
+    color:white;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.title{
+    margin-bottom: 30px;
+    font-size: 4rem;
+    color: white;
+    -webkit-text-stroke: 0.1px rgb(209, 209, 209);
+    font-family: title;
+}
+
+.container {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 15px;
+    padding: 50px;
+    margin-top: 50px;
+    width: 70%;
+}
+
+.pizzas{
+    margin-bottom: 40px;
+}
+
+.background-container {
+    background-image: url('Background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.pizzaList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px 10px;
+}
+
+.pizzaList li {
+    width: 33.3%;
+    min-height: 390px;
+}
+
+ul {
+    align-items: center;
+}
+
+.clickPizza {
+    background-color: yellowgreen;
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+img {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cart {
+    width: 60px;
+    height: 60px;
+    color: white;
+    position: fixed;
+    padding: 20px;
+    right: 10px;
+}
+
+.back {
+    position: absolute;
+    padding: 20px;
+    position: fixed;
+    color:white;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+@media (min-width:600px) and (max-width:1350px) {
+    .pizzaList li {
+        width: 50%;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .pizzaList {
+        flex-direction: column;
+    }
+    .pizzaList li {
+        width: 100%;
+    }
+}

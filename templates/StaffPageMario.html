@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>StaffPage</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='StaffPage.css') }}">
+        <meta http-equiv="refresh" content="1">
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ ftime }}</h1>
+            <h1>Hello, Mario!</h1>
+            <ul>
+                {% for pizza in orders %}
+            {% if pizza['Status'] != 'Completed' %}
+            <div class="box">
+                <h2>{{ pizza['TableNumber'] }}</h2>
+                <li>{{ pizza['Amount'] }}x {{ pizza['Size'] }} {{ pizza['Pizza'] }}</li>
+                    {% if 'Comments' in pizza %}
+                    <h4>*Comments: {{ pizza['Comments'] }}</h4>
+                    {% endif %}
+                    <h3>{{ pizza['Status'] }}</h3>
+                    {% if pizza['Status'] == "In Oven" %}
+                    <h4>{{ pizza['Timer'] }} seconds left</h4>
+                    {% endif %}
+                    <h5>Price: ${{ pizza['Price'] }}</h5>
+                    {% if pizza['Status'] == 'Ready' %}
+                        <form action="/Order_competed/{{ loop.index0 }}" method="post">
+                            <button type="submit" name = "action"  value = "completed" class="btn btn-success">Order Completed</button>
+                        </form>
+                    {% endif %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <a href="/" class="back"><img src="../static/return.png"></a>
+        </body>
+</html>
+    

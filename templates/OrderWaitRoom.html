@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Greetings</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='OrderWaitRoom.css') }}">
+    </head>
+    <body>
+        <a href="/" class="back"><img src="../static/return.png"></a>
+        <div class="container">
+        <h1>Your order: {{ tnum }}</h1>
+        <ul>
+            {% for pizza in basket %}
+                <li>{{ pizza['Amount'] }}x {{ pizza['Size'] }} {{ pizza['Pizza'] }} ${{ pizza['Price'] }}</li>
+                {% if 'Comments' in pizza %}
+                <h4>*Comments: {{ pizza['Comments'] }}</h4>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <h3>Total: ${{ Total }}</h3>
+        </div>
+    </body>
+</html>

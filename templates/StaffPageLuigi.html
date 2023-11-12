@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Luigi's Staff Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='StaffPage.css') }}">
+    <meta http-equiv="refresh" content="1">
+
+</head>
+<body>
+    <div class="container">
+    <h2>{{ ftime }}</h2>
+    <h1>Hello, Luigi!</h1>
+
+    <ul>
+        {% for pizza in orders %}
+            {% if pizza['Timer'] != 0 %}
+            <div class="box">
+                <h2>{{ pizza['TableNumber'] }}</h2>
+                <li>{{ pizza['Amount'] }}x {{ pizza['Size'] }} {{ pizza['Pizza'] }}</li>
+                {% if 'Comments' in pizza %}
+                    <h4>*Comments: {{ pizza['Comments'] }}</h4>
+                {% endif %}
+                <h3>{{ pizza['Status'] }}</h3>
+                <h3>{{ pizza['Timer'] }}</h3>
+                <form action="/change_status/{{ loop.index0 }}" method="post">
+                    <button type="submit" name = "action"  value = "add" class="btn btn-success">Change Status to 'In Oven'</button>
+                </form>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    </div>
+    <a href="/" class="back"><img src="../static/return.png"></a>
+</body>
+</html>
+
+

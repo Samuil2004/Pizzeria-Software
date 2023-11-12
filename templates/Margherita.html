@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ pizza_name }}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='Margherita.css') }}">
+    </head>
+    <body>
+    <a href="/TakeAway.html" name="ToMenu" value="BackToMenu" class="back"><img src="../static/return.png"></a>
+    <div class="container">
+        <h1>Pizza {{ pizza_name }}</h1>
+        <form action="/Margherita.html/{{ pizza_name }}" method="post">
+            <h3>Ingredients: {{ pizza_info.Ingredients }}</h3>
+            <div class="box">
+            <label for="Size">Select Size</label>
+            <select name="SelectedSize" id="dropdownmenu">
+                <option value="" disabled selected hidden>Choose a size</option>
+                {% for size, price in pizza_info.Size.items() %}
+                    <option value="{{ size }}">{{ size }} - {{ price }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            <br>
+            <div class="box">
+            <label for="Amount">Amount:</label>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default btn-subtract" type="button">-</button>
+                </span>
+                <input type="text" class="form-control no-padding text-center item-quantity" value="1">
+                <input type="hidden" name="UpdatedQuantity" id="updated-quantity" value="1">
+                <span class="input-group-btn">
+                     <button class="btn btn-default btn-add" type="button">+</button>
+                </span>
+            </div>
+            </div>
+            <br>
+            <div class="box">
+            <label for="AdditionalComments">Additional Comments</label>
+            <textarea name="AdditionalComments" id="comment" rows="3" cols="20" placeholder="Comments..."></textarea>
+            </div>
+            {% if error %}
+                <div id="messageBox">
+                    <p>{{ error }}</p>
+                </div>
+            {% endif %}
+
+            <button type="submit" name="action" value="add" class="add" onclick="showPopup()">Add to Basket</button>
+        </form>
+
+    </div>
+    <script>
+        function showPopup() {
+            var message = "Pizza is added to your basket!";
+            var title = "Success";
+            alert(message);
+        }
+        </script>
+    <script>
+        var minus = document.querySelector(".btn-subtract")
+        var add = document.querySelector(".btn-add");
+        var quantityNumber = document.querySelector(".item-quantity");
+        var updatedQuantity = document.querySelector("#updated-quantity");
+        var currentValue = 1;
+
+        minus.addEventListener("click", function(){
+            currentValue -= 1;
+            if (currentValue < 1) {
+                currentValue = 1;
+            }
+            quantityNumber.value = currentValue;
+            updatedQuantity.value = currentValue;
+        });
+
+        add.addEventListener("click", function() {
+            currentValue += 1;
+            quantityNumber.value = currentValue;
+            updatedQuantity.value = currentValue;
+        });
+    </script>
+</body>
+</html>

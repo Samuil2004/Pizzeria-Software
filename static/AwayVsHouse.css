@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(Italiana-Regular.ttf);
+}
+
+@font-face {
+    font-family: title;
+    src: url(EUR42.otf);
+}
+
+body {
+    background-image: url('Background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    font-family: myFont;
+}
+
+li {
+  display: inline-block;
+}
+
+
+h1 {
+    font-size: 4rem;
+    -webkit-text-stroke: 0.1px rgb(209, 209, 209);
+    margin-bottom: 50px;
+    font-family: title;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 15px;
+    padding: 150px;
+}
+
+input {
+    display: none;
+    width: 100px;
+    height: 40px;
+    align-self: center;
+    /* margin-bottom: 20px; */
+    border-radius: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+h3 {
+    margin-bottom: 30px;
+}
+
+
+.options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  padding: 0 15px;
+}
+
+.restaurant {
+  text-align: center; /* Center the text within the label horizontally */
+  display: block; /* Make the label a block-level element to center vertically */
+  margin: 0 auto; /* Center horizontally within its container */
+}
+
+/* .options button {
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: rgb(178, 190, 67);
+    color: white;
+} */
+
+#confirm {
+    display: none;
+    background-color: green;
+    color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    height: 50px;
+    width: 100px;
+    margin: auto;
+}
+
+.back {
+    position: absolute;
+    padding: 20px;
+    color:white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    background: none;
+    border: none;
+}
+
+.take, label, #hiddenButton{
+  text-align: center;
+  align-self: center;
+    text-decoration: none;
+    color: white;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    background-color: rgb(116, 19, 19);
+    color: white;
+    cursor: pointer;
+    width: 200px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#textCheckbox {
+    display: none;
+  }
+
+  #hiddenButton {
+    display: none;
+  }
+
+  #textCheckbox:checked + label + input[type="number"],
+  #textCheckbox:checked + label + #textField,
+  #textCheckbox:checked + label + #textField + #hiddenButton {
+    display: block;
+    margin-top: 20px;
+  }
+
+#hiddenButton {
+  margin: 0;
+  background-color: green;
+}
+
+.btn {
+  margin:10px;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  width: 70px;
+  align-self: center;
+  font-size: xx-small;
+}

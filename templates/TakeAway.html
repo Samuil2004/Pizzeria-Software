@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Opening page</title>
+    <link rel="stylesheet" href="static/TakeAway.css">
+</head>
+<body>
+    <div class="background-container">
+    </div>
+    <a href="/" class="back"><img src="../static/return.png"></a>
+    <a href="AwayVsHouse.html"><img src="../static/cart.png" class="cart"></a>
+    <div class="container">
+        <h1 class="title">Mario and Luigi</h1>
+        
+        {% if error %}
+        <div id="messageBox">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+        
+            <h2>Pizza Menu:</h2>
+            <ul class="pizzaList">
+                {% for pizza, details in pizza_details.items() %}
+                    <li class="pizzas">
+                        <img src="{{ details['ImageURL'] }}" alt="{{ pizza }}" width="300"><br>
+                        <a href="{{ url_for('Margherita', pizza_name=pizza) }}" class="clickPizza">{{ pizza }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <h2 class="basket">Your Basket:</h2>
+            <ul>
+                {% for pizza in basket %}
+                    <li>{{ pizza['Amount'] }}x {{ pizza['Size'] }} {{ pizza['Pizza'] }} ${{ pizza['Price'] }}</li>
+                    {% if 'Comments' in pizza %}
+                    <h4>*Comments: {{ pizza['Comments'] }}</h4>
+                    {% endif %}
+                    <form action="/remove_from_basket/{{ loop.index0 }}" method="post">
+                        <button type="submit" name = "action"  value = "remove" class="btn btn-success">Remove from basket</button>
+                    </form>
+                {% endfor %}
+            </ul>
+
+            <h3>Total: ${{ Total }}</h3>
+
+            {% if error %}
+            <div id="messageBox">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+            
+            <form action="/TakeAway.html" method="post" class="finish">
+                <button type = "submit" name = 'action' value = 'submit' class="fin">Finish Order</button>
+            </form>
+    </div>
+</body>
+</html>

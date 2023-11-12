@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(Italiana-Regular.ttf);
+}
+
+@font-face {
+    font-family: title;
+    src: url(EUR42.otf);
+}
+
+body {
+    background-image: url('Background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    font-family: myFont;
+}
+
+h1 {
+    font-size: 4rem;
+    -webkit-text-stroke: 0.1px rgb(209, 209, 209);
+    margin-bottom: 50px;
+    font-family: title;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 15px;
+    padding: 100px 150px;
+    width: 35%;
+    text-align: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.back {
+    position: absolute;
+    padding: 20px;
+    color:white;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+input {
+    width: 40px;
+    border-radius: 50px;
+    height: 40px;
+    text-align: center;
+}
+
+.btn-subtract {
+    background-color: red;
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+}
+
+.btn-add {
+    background-color: green;
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+}
+
+.add {
+    background-color: green;
+    color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    height: 50px;
+    width: 100px;
+    margin: auto;
+    cursor: pointer;
+}
+
+h3 {
+    margin-bottom: 50px;
+}
